@@ -22,15 +22,12 @@
 
     .horizontal & {
       writing-mode: horizontal-tb;
+      display: flex;
     }
 
     .vertical-rl & {
       writing-mode: vertical-rl;
       text-orientation: upright;
-    }
-
-    .no-wrap & {
-      display: flex;
     }
   }
 
@@ -41,11 +38,19 @@
     color: $editor-placeholder-color;
 
     .horizontal & {
-      left: 50%;
-      top: $prose-mirror-padding-start;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
       width: $editor-size;
-      transform: translateX(-50%);
+      height: $editor-size;
       max-width: $editor-max-size;
+      min-height: calc(
+        100%
+        - #{$prose-mirror-padding-start}
+        - #{$prose-mirror-padding-end}
+      );
     }
 
     .horizontal.numbers & {
@@ -84,6 +89,7 @@
 
 // ---
   .horizontal & {
+    display: flex;
     width: $editor-size;
     margin: 0 auto;
     max-width: $editor-max-size;
@@ -124,8 +130,14 @@
   //padding-top: $toolbar-height + 1px + $prose-mirror-padding-start
 
   .horizontal & {
-    padding-top: $prose-mirror-padding-start;
-    padding-bottom: $prose-mirror-padding-end;
+    flex: 1 1 0;
+    margin: auto 0;
+    height: $editor-size;
+    min-height: calc(
+      100%
+      - #{$prose-mirror-padding-start}
+      - #{$prose-mirror-padding-end}
+    );
   }
 
   .horizontal.numbers & {

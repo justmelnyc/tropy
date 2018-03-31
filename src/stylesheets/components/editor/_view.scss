@@ -17,12 +17,12 @@
   //}
 
   .scroll-container {
+    display: flex;
     overflow: auto;
     position: relative;
 
     .horizontal & {
       writing-mode: horizontal-tb;
-      display: flex;
     }
 
     .vertical-rl & {
@@ -86,10 +86,11 @@
 .prose-mirror-container {
   cursor: text;
   position: relative;
-
 // ---
+  flex: 0 1 auto;
+  display: flex;
+
   .horizontal & {
-    display: flex;
     width: $editor-size;
     margin: 0 auto;
     max-width: $editor-max-size;
@@ -128,9 +129,9 @@
 
 .ProseMirror {
   //padding-top: $toolbar-height + 1px + $prose-mirror-padding-start
+  flex: 1 1 auto;
 
   .horizontal & {
-    flex: 1 1 0;
     margin: auto 0;
     height: $editor-size;
     min-height: calc(
@@ -145,8 +146,13 @@
   }
 
   .vertical-rl & {
-    padding-right: $prose-mirror-padding-start;
-    padding-left: $prose-mirror-padding-end;
+    width: $editor-size;
+    margin: 0 auto;
+    min-width: calc(
+      100%
+      - #{$prose-mirror-padding-start}
+      - #{$prose-mirror-padding-end}
+    );
   }
 
   .vertical-rl.numbers & {
